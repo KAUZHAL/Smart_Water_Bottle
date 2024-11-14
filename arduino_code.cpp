@@ -43,7 +43,7 @@ void loop()
  delay(10);
 int watersensor=analogRead(sensorpin);
 digitalWrite(sensorpower,LOW);
-Serial.print("Water sensored: ");
+Serial.print("Water sensor: ");
 Serial.println(watersensor);
 if(watersensor>350)
 {

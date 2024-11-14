@@ -35,7 +35,6 @@ async def collect_user_data(user_data: UserData):
 async def plot_graph():
     with open('xydb.txt', 'r') as f:
         txt = f.read().split('\n')
-        # return {"txt": txt.split('\n') }
         water_timestamps = eval(txt[0])
         water_drunk = eval(txt[1])
     return StreamingResponse(plot_to_bytes(water_timestamps, water_drunk), media_type="img/png")

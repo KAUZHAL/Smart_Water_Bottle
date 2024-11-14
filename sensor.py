@@ -1,9 +1,8 @@
 import serial
 import time
 
-# Set up serial communication (ensure the correct port is used)
-arduino = serial.Serial('COM3', 9600)  # Change 'COM3' to your Arduino's port
-time.sleep(2)  # Wait for Arduino to reset
+arduino = serial.Serial('COM5', 9600) 
+time.sleep(2)  
 
 def read_ultrasonic_data():
     while True:

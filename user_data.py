@@ -1,7 +1,7 @@
 from math import pi
 from datetime import datetime
 
-def distance_to_volume(distance: float, bottle_height = 16.5, bottle_radius = 4.25):
+def distance_to_volume(distance: float, bottle_radius = 4.25):
     return int(pi * (bottle_radius **2 ) * (distance))
 
 

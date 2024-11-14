@@ -57,7 +57,7 @@ function setCustomGoal() {
 
 function finishAndSendData() {
   // Send the water intake data to the backend
-  fetch("https://your-backend-url.com/api/water-intake", {
+  fetch("http://localhost:8000/user_data", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

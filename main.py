@@ -16,10 +16,9 @@ if __name__ == "__main__":
 
     while True:
         distance = next(dummy_sensor())
-        amount_drunk(distance, distances, water_drunk)
+        amount_drunk(distance, distances, water_drunk, water_timestamps)
         log_raw_data(distance, distance_timestamps, distances)
-        print(f"distances: {distances}")
-        # print(f"timestamps: {timestamps}")
-        print(f"water_drunk: {water_drunk}")
+        print(f"timestamps: {list(zip(distance_timestamps, distances))}")
+        print(f"timestamps: {list(zip(water_timestamps, water_drunk))}")
         print('-' * 140)
         sleep(2)

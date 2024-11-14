@@ -1,22 +1,23 @@
 from math import pi
-import matplotlib.pyplot as plt
 from datetime import datetime
 
-def distance_to_volume(distance, bottle_height = 16.5, bottle_radius = 4.25):
-    return pi * (bottle_radius **2 ) * (bottle_height - distance)
+def distance_to_volume(distance: float, bottle_height = 16.5, bottle_radius = 4.25):
+    return int(pi * (bottle_radius **2 ) * (distance))
+
 
 def log_raw_data(distance: int, timestamps: list, distances: list):
-    timestamps.append(datetime.now().second)
+    timestamps.append(datetime.now())
     distances.append(distance)
 
 def amount_drunk(distance: int, distances: list, water_drunk: list, timestamps: list):
-    current_distance = distance - distances[-1]
-    
-    timestamps.append(datetime.now().second)
+    try:
+        current_distance = distance - distances[-1] 
+    except IndexError:
+        current_distance = distance
 
-
-    # print(f"current_distance: {current_distance}")
-    water_drunk.append(current_distance)
+    if current_distance > 0:
+        timestamps.append(datetime.now())
+        water_drunk.append(distance_to_volume(current_distance))
 
 
 from random import randint

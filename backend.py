@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import uvicorn
+import datetime
 
 from plot import plot_to_bytes
 
@@ -15,7 +16,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    # allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,7 +34,8 @@ async def collect_user_data(user_data: UserData):
 @app.get('/graph')
 async def plot_graph():
     with open('xydb.txt', 'r') as f:
-        txt = f.readlines()
+        txt = f.read().split('\n')
+        # return {"txt": txt.split('\n') }
         water_timestamps = eval(txt[0])
         water_drunk = eval(txt[1])
     return StreamingResponse(plot_to_bytes(water_timestamps, water_drunk), media_type="img/png")
@@ -43,3 +46,6 @@ def start_server():
         host="127.0.0.1",
         port=8000,
     )
+
+if __name__ == "__main__":
+    start_server()

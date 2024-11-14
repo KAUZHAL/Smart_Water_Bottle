@@ -1,11 +1,14 @@
 from pywhatkit import sendwhatmsg_instantly
-from datetime import datetime
+import schedule
+import time
 
-def reminder():
-    prev_time = -1
+def water_alert(phno):
+    sendwhatmsg_instantly(phno, "Its time for a water break.", 15)
+    print("Sent message.")
+
+if __name__ == "__main__":
+    phno = '+8840413659'
+    schedule.every(60).minutes.do(lambda: water_alert(phno))
     while True:
-        hour = datetime.now().hour
-        if hour != prev_time:
-            # sendwhatmsg_instantly("+9462939442", "Its time for a water break.", 15)
-            print("hello")
-            prev_time = hour
+        schedule.run_pending()
+        time.sleep(1)

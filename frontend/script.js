@@ -76,3 +76,15 @@ function finishAndSendData() {
       console.error("Error:", error);
     });
 }
+
+
+
+function loadPlot() {
+  fetch("http://127.0.0.1:8000/graph") // Adjust URL if necessary
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      document.getElementById("plotImage").src = url;
+    })
+    .catch((error) => console.error("Error loading plot:", error));
+}

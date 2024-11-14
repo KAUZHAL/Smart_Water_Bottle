@@ -11,8 +11,13 @@ def main(water_timestamps, water_drunk, distances, distance_timestamps):
     distance = next(dummy_sensor())
     amount_drunk(distance, distances, water_drunk, water_timestamps)
     log_raw_data(distance, distance_timestamps, distances)
+    
     print(f"timestamps: {list(zip(distance_timestamps, distances))}")
     print(f"timestamps: {list(zip(water_timestamps, water_drunk))}")
+
+    with open('xydb.txt', 'w') as f:
+        f.writelines((str(water_timestamps), str(water_drunk)))
+
     print('-' * 140)
     sleep(2)
 

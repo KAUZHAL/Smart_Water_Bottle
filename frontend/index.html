@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Water Intake Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daily Water Intake Calculator</h1>
+      <form id="waterForm" onsubmit="calculateWaterIntake(event)">
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" required />
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" min="1" required />
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" min="1" required />
+
+        <label for="activity">Activity Level:</label>
+        <select id="activity" name="activity" required>
+          <option value="sedentary">Sedentary (little or no exercise)</option>
+          <option value="light">Light (light exercise 1-3 days/week)</option>
+          <option value="moderate">
+            Moderate (moderate exercise 3-5 days/week)
+          </option>
+          <option value="active">
+            Active (intense exercise 6-7 days/week)
+          </option>
+        </select>
+
+        <label for="wakeTime">Wake Time:</label>
+        <input type="time" id="wakeTime" name="wakeTime" required />
+
+        <label for="sleepTime">Sleep Time:</label>
+        <input type="time" id="sleepTime" name="sleepTime" required />
+
+        <button type="submit">Calculate</button>
+      </form>
+
+      <div id="result" class="result" style="display: none"></div>
+
+      <div id="customGoalSection" style="display: none">
+        <label for="customGoal">Custom Water Intake Goal (liters):</label>
+        <input
+          type="number"
+          id="customGoal"
+          name="customGoal"
+          step="0.1"
+          min="0"
+        />
+        <button onclick="setCustomGoal()">Set Custom Goal</button>
+        <button onclick="finishAndSendData()">Finish</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
